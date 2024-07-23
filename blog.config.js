@@ -4,7 +4,7 @@ const BLOG = {
   email: 'i@xuedong.xyz',
   link: 'https://b.xuedong.xyz',
   description: '碎片/笔记/风暴/分享',
-  lang: 'zh-SG', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
+  lang: 'zh-CN', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Singapore', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'auto', // ['light', 'dark', 'auto'],
   font: ['Noto Sans SC', 'sans-serif'], // ['sans-serif', 'serif']
