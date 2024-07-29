@@ -52,6 +52,7 @@ const components = {
                   import('prismjs/components/prism-rust'),
                   import('prismjs/components/prism-sass'),
                   import('prismjs/components/prism-scss'),
+                  import('prismjs/components/prism-shell-session'),
                   import('prismjs/components/prism-solidity'),
                   import('prismjs/components/prism-sql'),
                   import('prismjs/components/prism-stylus'),
