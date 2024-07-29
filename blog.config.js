@@ -1,5 +1,5 @@
 const BLOG = {
-  title: '古学冬 | Hugo Koo',
+  title: '学冬 | Hugo Koo',
   author: 'Xuedong',
   email: 'i@xuedong.xyz',
   link: 'https://b.xuedong.xyz',
