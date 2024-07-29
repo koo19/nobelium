@@ -37,6 +37,24 @@
   src: url('/fonts/SourceSerif-Italic.var.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  font-named-instance: 'Regular';
+  src: url('/fonts/NotoSansSC-VariableFont_wght.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  font-named-instance: 'Regular';
+  src: url('/fonts/NotoSerifSC-VariableFont_wght.ttf') format('ttf');
+}
+
 html {
   --scrollbarBG: #ffffff00;
   --thumbBG: #b8b8b8;
