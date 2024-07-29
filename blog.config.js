@@ -1,5 +1,5 @@
 const BLOG = {
-  title: '顾雪冬',
+  title: '顾雪冬 | Hugo Koo',
   author: 'Xuedong',
   email: 'i@xuedong.xyz',
   link: 'https://b.xuedong.xyz',
@@ -11,7 +11,7 @@ const BLOG = {
   lightBackground: '#fffefc', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#18181B', // use hex value, don't forget '#'
   path: '', // leave this empty unless you want to deploy Nobelium in a folder
-  since: 2022, // If leave this empty, current year will be used.
+  since: '', // If leave this empty, current year will be used.
   postsPerPage: 7,
   sortByDate: false,
   showAbout: true,
