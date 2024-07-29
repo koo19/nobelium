@@ -1,6 +1,6 @@
 {
   "NAV": {
-    "INDEX": "Blog",
+    "INDEX": "Posts",
     "RSS": "RSS",
     "SEARCH": "Search",
     "ABOUT": "About"
@@ -15,7 +15,7 @@
   },
   "PAGE": {
     "ERROR_404": {
-      "MESSAGE": "Nothing here"
+      "MESSAGE": "Nothing here (literally)."
     }
   }
 }
