@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import cn from 'classnames'
 import { fetchCusdisLang } from '@/lib/cusdisLang'
 import { useConfig } from '@/lib/config'
+import Crypto from 'crypto'
 
 const GitalkComponent = dynamic(
   () => {
@@ -41,7 +42,8 @@ const Comments = ({ frontMatter }) => {
         <GitalkComponent
           options={{
             id: frontMatter.id,
-            title: frontMatter.title,
+            // frontMatter.title
+            title: Crypto.createHmac('sha256', frontMatter.id),
             clientID: BLOG.comment.gitalkConfig.clientID,
             clientSecret: BLOG.comment.gitalkConfig.clientSecret,
             repo: BLOG.comment.gitalkConfig.repo,
