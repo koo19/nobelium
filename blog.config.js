@@ -40,7 +40,7 @@ const BLOG = {
     // support provider: gitalk, utterances, cusdis
     provider: 'gitalk', // leave it empty if you don't need any comment plugin
     gitalkConfig: {
-      repo: 'nobelium-gitalk.git', // The repository of store comments
+      repo: 'nobelium-gitalk', // The repository of store comments
       owner: 'hugo-koo',
       admin: ['hugo-koo'],
       clientID: 'Ov23litg3hu1J8Ccm4P4',
@@ -48,7 +48,7 @@ const BLOG = {
       distractionFreeMode: false
     },
     utterancesConfig: {
-      repo: ''
+      repo: 'hugo-koo/nobelium-utterances'
     },
     cusdisConfig: {
       appId: 'b3a50538-ed91-4166-b6d6-953569d63f00', // data-app-id
