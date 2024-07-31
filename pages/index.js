@@ -25,8 +25,6 @@ export async function getStaticProps() {
     const regexExp2 = /^(.*?)summary/g
     postsToShow[index].preview = content.replace(regexExp, '').replace(regexExp2, '').substring(0, 70) + '...';
   }));
-
-  console.log(postsToShow)
   return {
     props: {
       page: 1, // current page is 1
