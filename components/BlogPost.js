@@ -19,7 +19,7 @@ const BlogPost = ({ post }) => {
         </header>
         <main>
           <p className="hidden md:block leading-8 text-gray-700 dark:text-gray-300">
-            {post.summary}
+            {post.summary || post.preview}
           </p>
         </main>
       </article>
