@@ -43,7 +43,7 @@ const Comments = ({ frontMatter }) => {
           options={{
             id: frontMatter.id,
             // frontMatter.title
-            title: Crypto.createHmac('sha256', frontMatter.id),
+            title: frontMatter.id,
             clientID: BLOG.comment.gitalkConfig.clientID,
             clientSecret: BLOG.comment.gitalkConfig.clientSecret,
             repo: BLOG.comment.gitalkConfig.repo,
