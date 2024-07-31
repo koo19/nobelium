@@ -14,16 +14,20 @@ export async function getStaticProps() {
   let postsToShow = posts.slice(0, clientConfig.postsPerPage)
   const totalPosts = posts.length
   const showNext = totalPosts > clientConfig.postsPerPage
+  // Setting up previews.
   await Promise.all(postsToShow.map(async (post, index) => {
-    const blockMap = await getPostBlocks(post.id);
-    const content = ReactDOMServer.renderToString(
-      <ConfigProvider value={clientConfig}>
-        <NotionRenderer recordMap={blockMap} />
-      </ConfigProvider>
-    )
-    const regexExp = /(<).*?(>)/g
-    const regexExp2 = /^(.*?)summary/g
-    postsToShow[index].preview = content.replace(regexExp, '').replace(regexExp2, '').substring(0, 70) + '...';
+    // Only run without summary
+    if (!post.summary) {
+      const blockMap = await getPostBlocks(post.id);
+      const content = ReactDOMServer.renderToString(
+        <ConfigProvider value={clientConfig}>
+          <NotionRenderer recordMap={blockMap} />
+        </ConfigProvider>
+      )
+      const regexExp = /(<).*?(>)/g
+      const regexExp2 = /^(.*?)summary/g
+      postsToShow[index].preview = content.replace(regexExp, '').replace(regexExp2, '').substring(0, 70) + '...';
+    }
   }));
   return {
     props: {
