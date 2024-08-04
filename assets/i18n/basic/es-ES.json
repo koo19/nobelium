@@ -15,7 +15,7 @@
   },
   "PAGE": {
     "ERROR_404": {
-      "MESSAGE": "No hay nada aquí"
+      "MESSAGE": "No se encontró ninguna página (literalmente)."
     }
   }
 }
