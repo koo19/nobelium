@@ -7,7 +7,15 @@ import { getAllPosts } from '@/lib/notion'
 import ReactDOMServer from 'react-dom/server'
 import { ConfigProvider } from '@/lib/config'
 import NotionRenderer from '@/components/NotionRenderer'
-
+const Page = ({ postsToShow, page, showNext }) => {
+  return (
+    <Container>
+      {postsToShow &&
+        postsToShow.map(post => <BlogPost key={post.id} post={post} />)}
+      <Pagination page={page} showNext={showNext} />
+    </Container>
+  )
+}
 export async function getStaticProps(context) {
   const { page } = context.params // Get Current Page No.
   const posts = await getAllPosts({ includePages: false })
@@ -40,15 +48,6 @@ export async function getStaticProps(context) {
     },
     revalidate: 1
   }
-}
-const Page = ({ postsToShow, page, showNext }) => {
-  return (
-    <Container>
-      {postsToShow &&
-        postsToShow.map(post => <BlogPost key={post.id} post={post} />)}
-      <Pagination page={page} showNext={showNext} />
-    </Container>
-  )
 }
 
 // export async function getStaticProps (context) {
