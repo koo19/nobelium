@@ -8,11 +8,15 @@ import ReactDOMServer from 'react-dom/server'
 import { ConfigProvider } from '@/lib/config'
 import NotionRenderer from '@/components/NotionRenderer'
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
+  const { page } = context.params // Get Current Page No.
   const posts = await getAllPosts({ includePages: false })
-  let postsToShow = posts.slice(0, clientConfig.postsPerPage)
+  let postsToShow = posts.slice(
+    config.postsPerPage * (page - 1),
+    config.postsPerPage * page
+  )
   const totalPosts = posts.length
-  const showNext = totalPosts > clientConfig.postsPerPage
+  const showNext = page * config.postsPerPage < totalPosts
   // Setting up previews.
   await Promise.all(postsToShow.map(async (post, index) => {
     // Only run without summary
@@ -30,7 +34,7 @@ export async function getStaticProps() {
   }));
   return {
     props: {
-      page: 1, // current page is 1
+      page, // current page is 1
       postsToShow,
       showNext
     },
@@ -47,24 +51,24 @@ const Page = ({ postsToShow, page, showNext }) => {
   )
 }
 
-export async function getStaticProps (context) {
-  const { page } = context.params // Get Current Page No.
-  const posts = await getAllPosts({ includePages: false })
-  const postsToShow = posts.slice(
-    config.postsPerPage * (page - 1),
-    config.postsPerPage * page
-  )
-  const totalPosts = posts.length
-  const showNext = page * config.postsPerPage < totalPosts
-  return {
-    props: {
-      page, // Current Page
-      postsToShow,
-      showNext
-    },
-    revalidate: 1
-  }
-}
+// export async function getStaticProps (context) {
+//   const { page } = context.params // Get Current Page No.
+//   const posts = await getAllPosts({ includePages: false })
+//   const postsToShow = posts.slice(
+//     config.postsPerPage * (page - 1),
+//     config.postsPerPage * page
+//   )
+//   const totalPosts = posts.length
+//   const showNext = page * config.postsPerPage < totalPosts
+//   return {
+//     props: {
+//       page, // Current Page
+//       postsToShow,
+//       showNext
+//     },
+//     revalidate: 1
+//   }
+// }
 
 export async function getStaticPaths () {
   const posts = await getAllPosts({ includePages: false })
