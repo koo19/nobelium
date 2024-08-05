@@ -7,9 +7,9 @@ const BLOG = {
   lang: 'zh-CN', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Singapore', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'auto', // ['light', 'dark', 'auto'],
-  font: ['Noto Sans SC', 'sans-serif'], // ['sans-serif', 'serif']
-  lightBackground: '#fffefc', // use hex value, don't forget '#' e.g #fffefc
-  darkBackground: '#18181B', // use hex value, don't forget '#'
+  font: ['Noto Sans CJK SC', 'sans-serif'], // ['sans-serif', 'serif']
+  lightBackground: '#cbd5e1', // use hex value, don't forget '#' e.g #fffefc
+  darkBackground: '#083344', // use hex value, don't forget '#'
   path: '', // leave this empty unless you want to deploy Nobelium in a folder
   since: '', // If leave this empty, current year will be used.
   postsPerPage: 7,
