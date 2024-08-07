@@ -25,8 +25,8 @@ export async function getStaticProps() {
         </ConfigProvider>
       )
       const regexExp = /(<).*?(>)/g
-      const regexExp2 = /^(.*?)splitsign/g
-      postsToShow[index].preview = content.replace(regexExp, '').replace(regexExp2, '').substring(0, 70) + '...';
+      const regexExp2 = /^(.*?)textsplitsign/g
+      postsToShow[index].preview = content.replace(regexExp2, '').replace(regexExp, '').substring(0, 70) + '...';
     }
   }));
   return {
