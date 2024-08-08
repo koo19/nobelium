@@ -37,7 +37,7 @@ export async function getStaticProps(context) {
         </ConfigProvider>
       )
       const regexExp = /(<).*?(>)/g
-      const regexExp2 = /^(.*?)textsplitsign/g
+      const regexExp2 = /^(.*?)TEXTSPLITSIGN/g
       postsToShow[index].preview = content.replace(regexExp2, '').replace(regexExp, '').substring(0, 70) + '...';
     }
   }));
