@@ -1,11 +1,13 @@
 import Script from 'next/script'
 import { useConfig } from '@/lib/config'
+import GoogleAds from './GoogleAds'
 
 const Scripts = () => {
   const BLOG = useConfig()
 
   return (
     <>
+      <GoogleAds />
       {BLOG.analytics && BLOG.analytics.provider === 'ackee' && (
         <Script
           src={BLOG.analytics.ackeeConfig.tracker}

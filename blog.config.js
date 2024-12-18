@@ -56,7 +56,13 @@ const BLOG = {
       scriptSrc: 'https://cusdis.com/js/cusdis.es.js' // change this if you're using self-hosted version
     }
   },
-  isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
+  isProd: process.env.VERCEL_ENV === 'production', // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
+  googleAdsenseId: process.env.GOOGLE_ADSENSE_ID || 'ca-pub-1848654824800692', // e.g. 'ca-pub-XXXXXXXXXXXXXXXX'
+  adSlots: {
+    inArticle: 'XXXXXXXXXX', // Your article ad slot ID
+    sidebar: 'XXXXXXXXXX',   // Your sidebar ad slot ID
+    footer: 'XXXXXXXXXX'     // Your footer ad slot ID
+  }
 }
 // export default BLOG
 module.exports = BLOG

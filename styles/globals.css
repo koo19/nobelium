@@ -195,3 +195,10 @@ nav {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.ad-container {
+  min-height: 100px;
+  background-color: transparent;
+  text-align: center;
+  overflow: hidden;
+}
