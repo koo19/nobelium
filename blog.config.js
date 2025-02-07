@@ -1,12 +1,12 @@
 const BLOG = {
-  title: '学冬 | Hugo Koo',
-  author: 'Hugo Koo',
-  email: 'i@xuedong.xyz',
-  link: 'https://b.xuedong.xyz',
-  description: '古学冬: 碎片/笔记/风暴/分享',
-  lang: 'zh-CN', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
+  title: process.env.SITE_TITLE || 'SITE_TITLE',
+  author: process.env.MAIN_AUTHOR || 'MAIN_AUTHOR',
+  email: process.env.MAIN_EMAIL || 'MAIN_EMAIL',
+  link: process.env.LINK || 'https://b.xuedong.xyz',
+  description: process.env.DESCRIPTION || 'DESCRIPTION',
+  lang: process.env.LANG || 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Singapore', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
-  appearance: 'dark', // ['light', 'dark', 'auto'],
+  appearance: process.env.APPEARANCE || 'auto', // ['light', 'dark', 'auto'],
   font: ['Noto Sans CJK SC', 'sans-serif'], // ['sans-serif', 'serif']
   lightBackground: '#B0E0E6', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#083344', // use hex value, don't forget '#'
@@ -18,9 +18,9 @@ const BLOG = {
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
-  socialLink: ['https://x.com/hokdung_koo'],
+  socialLink: process.env.SOCIALLINK || ['https://x.com/hokdung_koo'],
   seo: {
-    keywords: ['Blog', 'Website', 'xuedong', 'HugoKoo'],
+    keywords: ['Blog', 'Website', 'xuedong', 'Hokdung', 'HokdungKoo', 'HugoKoo', 'Koo'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
@@ -33,7 +33,7 @@ const BLOG = {
       domainId: '' // e.g '0e2257a8-54d4-4847-91a1-0311ea48cc7b'
     },
     gaConfig: {
-      measurementId: 'G-WFPG9PREKP' // e.g: G-XXXXXXXXXX
+      measurementId: process.env.GA_ID || 'G-WFPG9PREKP' // e.g: G-XXXXXXXXXX
     }
   },
   comment: {
