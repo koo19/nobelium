@@ -8,6 +8,8 @@ import ReactDOMServer from 'react-dom/server'
 import { ConfigProvider } from '@/lib/config'
 import NotionRenderer from '@/components/NotionRenderer'
 import useInfiniteScroll from '@/lib/useInfiniteScroll'
+import AdUnit from '@/components/AdUnit'
+import useWindowWidth from '@/hooks/useWindowWidth'
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ includePages: false })
@@ -44,6 +46,7 @@ export default function Blog({ initialPosts, totalPosts }) {
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
   const [hasMore, setHasMore] = useState(totalPosts > postsPerPage)
+  const width = useWindowWidth()
 
   const loadMore = async () => {
     if (loading) return
@@ -72,20 +75,43 @@ export default function Blog({ initialPosts, totalPosts }) {
   })
 
   return (
-    <Container title={title} description={description}>
-      {posts.map(post => (
-        <BlogPost key={post.id} post={post} />
-      ))}
+    <>
+      <Container title={title} description={description}>
+        {posts.map(post => (
+          <BlogPost key={post.id} post={post} />
+        ))}
 
-      {hasMore && (
-        <div ref={infiniteRef} className="flex justify-center py-10">
-          {loading ? (
-            <div className="loader" />
-          ) : (
-            <div className="h-10" /> // Spacer for infinite scroll trigger
-          )}
+        {hasMore && (
+          <div ref={infiniteRef} className="flex justify-center py-10">
+            {loading ? (
+              <div className="loader" />
+            ) : (
+              <div className="h-10" /> // Spacer for infinite scroll trigger
+            )}
+          </div>
+        )}
+      </Container>
+      {width > 768 ? (
+        <div style={{
+          position: 'fixed',
+          top: '100px',
+          right: '20px',
+          zIndex: 1000
+        }}>
+          <AdUnit orientation="vertical" />
+        </div>
+      ) : (
+        <div style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1000,
+          textAlign: 'center'
+        }}>
+          <AdUnit orientation="horizontal" />
         </div>
       )}
-    </Container>
+    </>
   )
 }

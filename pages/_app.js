@@ -58,7 +58,7 @@ MyApp.getInitialProps = async ctx => {
     // On client: fetch from API
     ? await fetch('/api/config').then(res => res.json())
     // On server: import directly
-    : await import('@/lib/server/config').then(module => module.clientConfig)
+    : await import('@/lib/server/config').then(module => module.config)
 
   // Configure dayjs with timezone from config
   prepareDayjs(config.timezone)
