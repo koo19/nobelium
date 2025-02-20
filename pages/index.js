@@ -2,11 +2,8 @@ import { useEffect, useState } from 'react'
 import { clientConfig } from '@/lib/server/config'
 import Container from '@/components/Container'
 import BlogPost from '@/components/BlogPost'
-import { getAllPosts, getPostBlocks } from '@/lib/notion'
+import { getAllPosts } from '@/lib/notion'
 import { useConfig } from '@/lib/config'
-import ReactDOMServer from 'react-dom/server'
-import { ConfigProvider } from '@/lib/config'
-import NotionRenderer from '@/components/NotionRenderer'
 import useInfiniteScroll from '@/lib/useInfiniteScroll'
 import AdUnit from '@/components/AdUnit'
 import useWindowWidth from '@/hooks/useWindowWidth'
@@ -15,21 +12,6 @@ export async function getStaticProps() {
   const posts = await getAllPosts({ includePages: false })
   let postsToShow = posts.slice(0, clientConfig.postsPerPage)
   const totalPosts = posts.length
-
-  // Setting up previews
-  await Promise.all(postsToShow.map(async (post, index) => {
-    if (!post.summary) {
-      const blockMap = await getPostBlocks(post.id)
-      const content = ReactDOMServer.renderToString(
-        <ConfigProvider value={clientConfig}>
-          <NotionRenderer recordMap={blockMap} />
-        </ConfigProvider>
-      )
-      const regexExp = /(<).*?(>)/g
-      const regexExp2 = /^(.*?)TEXTSPLITSIGN/g
-      postsToShow[index].preview = content.replace(regexExp2, '').replace(regexExp, '').substring(0, 70) + '...'
-    }
-  }))
 
   return {
     props: {

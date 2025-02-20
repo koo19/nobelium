@@ -3,10 +3,7 @@ import { config, clientConfig } from '@/lib/server/config'
 import Container from '@/components/Container'
 import BlogPost from '@/components/BlogPost'
 import Pagination from '@/components/Pagination'
-import { getAllPosts, getPostBlocks } from '@/lib/notion'
-import ReactDOMServer from 'react-dom/server'
-import { ConfigProvider } from '@/lib/config'
-import NotionRenderer from '@/components/NotionRenderer'
+import { getAllPosts } from '@/lib/notion'
 const Page = ({ postsToShow, page, showNext }) => {
   return (
     <Container>
@@ -26,21 +23,6 @@ export async function getStaticProps(context) {
   )
   const totalPosts = posts.length
   const showNext = page * config.postsPerPage < totalPosts
-  // Setting up previews.
-  await Promise.all(postsToShow.map(async (post, index) => {
-    // Only run without summary
-    if (!post.summary) {
-      const blockMap = await getPostBlocks(post.id);
-      const content = ReactDOMServer.renderToString(
-        <ConfigProvider value={clientConfig}>
-          <NotionRenderer recordMap={blockMap} />
-        </ConfigProvider>
-      )
-      const regexExp = /(<).*?(>)/g
-      const regexExp2 = /^(.*?)TEXTSPLITSIGN/g
-      postsToShow[index].preview = content.replace(regexExp2, '').replace(regexExp, '').substring(0, 70) + '...';
-    }
-  }));
   return {
     props: {
       page, // Current Page
