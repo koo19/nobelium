@@ -7,7 +7,7 @@ const BlogPost = ({ post }) => {
 
   return (
     <Link href={`${BLOG.path}/${post.slug}`}>
-      <div className="flex flex-col md:flex-row gap-6 mb-6 md:mb-8 rounded dark:outline-zinc-700 outline-violet-300 outline outline-2 outline-offset-4 dark:hover:outline-zinc-400 hover:outline-violet-400 group/postcard">
+      <div className="flex flex-col md:flex-row gap-6 mb-6 md:mb-8 rounded dark:outline-zinc-700 outline-violet-300 outline outline-2 outline-offset-8 dark:hover:outline-zinc-400 hover:outline-violet-400 group/postcard p-2">
         <article key={post.id} className="flex-1">
           <header className="flex flex-col justify-between md:flex-row md:items-baseline">
             <h2 className="text-lg md:text-2xl font-medium mb-2 cursor-pointer text-black dark:text-gray-100">
@@ -25,7 +25,7 @@ const BlogPost = ({ post }) => {
         </article>
 
         {post.firstImage && (
-          <div className="w-full md:w-48 h-32 md:h-48 flex-shrink-0 overflow-hidden flex items-center justify-center">
+          <div className="w-full md:w-32 h-32 md:h-32 flex-shrink-0 overflow-hidden flex items-center justify-center">
             <img
               src={post.firstImage}
               alt={post.title}
